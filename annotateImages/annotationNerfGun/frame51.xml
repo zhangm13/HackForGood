@@ -1,7 +1,7 @@
 <annotation>
 	<folder>createImages</folder>
-	<filename>frame0.jpg</filename>
-	<path>D:\Hackathon\HackForGood\createImages\frame0.jpg</path>
+	<filename>frame51.jpg</filename>
+	<path>D:\Hackathon\HackForGood\createImages\frame51.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
@@ -17,9 +17,9 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>860</xmin>
-			<ymin>178</ymin>
-			<xmax>1414</xmax>
+			<xmin>878</xmin>
+			<ymin>351</ymin>
+			<xmax>1492</xmax>
 			<ymax>494</ymax>
 		</bndbox>
 	</object>
