@@ -1,4 +1,8 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx";
+import Security from "views/Security/Security.jsx";
+import CameraOne from "views/Security/CameraOne.jsx";
+import CameraTwo from "views/Security/CameraTwo.jsx";
+import CameraThree from "views/Security/CameraThree.jsx";
 import Buttons from "views/Components/Buttons.jsx";
 import GridSystem from "views/Components/GridSystem.jsx";
 import Panels from "views/Components/Panels.jsx";
@@ -32,6 +36,33 @@ var dashboardRoutes = [
     name: "Dashboard",
     icon: "pe-7s-graph",
     component: Dashboard
+  },
+  {
+    collapse: true,
+    path: "/security",
+    name: "Security",
+    state: "openSecurity",
+    icon: "pe-7s-shield",
+    views: [
+      {
+        path: "security/camera",
+        name: "Camera 1",
+        mini: "C1",
+        component: CameraOne
+      },
+      {
+        path: "security/camera",
+        name: "Camera 2",
+        mini: "C3",
+        component: CameraTwo
+      },
+      {
+        path: "security/camera",
+        name: "Camera 3",
+        mini: "C3",
+        component: CameraThree
+      }
+    ]
   },
   {
     collapse: true,
