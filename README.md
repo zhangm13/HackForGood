@@ -1,1 +1,1 @@
-# HackForGood
+# AIForGood  - LookOutAI
