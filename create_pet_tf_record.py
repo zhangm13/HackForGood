@@ -13,18 +13,6 @@
 # limitations under the License.
 # ==============================================================================
 
-r"""Convert the Oxford pet dataset to TFRecord for object_detection.
-
-See: O. M. Parkhi, A. Vedaldi, A. Zisserman, C. V. Jawahar
-     Cats and Dogs
-     IEEE Conference on Computer Vision and Pattern Recognition, 2012
-     http://www.robots.ox.ac.uk/~vgg/data/pets/
-
-Example usage:
-    ./create_pet_tf_record --data_dir=/home/user/pet \
-        --output_dir=/home/user/pet/output
-"""
-
 import hashlib
 import io
 import logging
@@ -40,23 +28,13 @@ from object_detection.utils import dataset_util
 from object_detection.utils import label_map_util
 
 flags = tf.app.flags
-flags.DEFINE_string('data_dir', '', 'Root directory to raw pet dataset.')
-flags.DEFINE_string('output_dir', '', 'Path to directory to output TFRecords.')
-flags.DEFINE_string('label_map_path', 'data/pet_label_map.pbtxt',
-                    'Path to label map proto')
+flags.DEFINE_string('data_dir', '.')
+flags.DEFINE_string('output_dir','.')
+flags.DEFINE_string('label_map_path', 'nerf_label_map.pbtxt')
 FLAGS = flags.FLAGS
 
 
 def get_class_name_from_filename(file_name):
-  """Gets the class name from a file.
-
-  Args:
-    file_name: The file name to get the class name from.
-               ie. "american_pit_bull_terrier_105.jpg"
-
-  Returns:
-    A string of the class name.
-  """
   match = re.match(r'([A-Za-z_]+)(_[0-9]+\.jpg)', file_name, re.I)
   return match.groups()[0]
 
@@ -65,26 +43,7 @@ def dict_to_tf_example(data,
                        label_map_dict,
                        image_subdirectory,
                        ignore_difficult_instances=False):
-  """Convert XML derived dict to tf.Example proto.
-
-  Notice that this function normalizes the bounding box coordinates provided
-  by the raw data.
-
-  Args:
-    data: dict holding PASCAL XML fields for a single image (obtained by
-      running dataset_util.recursive_parse_xml_to_dict)
-    label_map_dict: A map from string label names to integers ids.
-    image_subdirectory: String specifying subdirectory within the
-      Pascal dataset directory holding the actual image data.
-    ignore_difficult_instances: Whether to skip difficult instances in the
-      dataset  (default: False).
-
-  Returns:
-    example: The converted tf.Example.
-
-  Raises:
-    ValueError: if the image pointed to by data['filename'] is not a valid JPEG
-  """
+    
   img_path = os.path.join(image_subdirectory, data['filename'])
   with tf.gfile.GFile(img_path, 'rb') as fid:
     encoded_jpg = fid.read()
@@ -151,15 +110,7 @@ def create_tf_record(output_filename,
                      annotations_dir,
                      image_dir,
                      examples):
-  """Creates a TFRecord file from examples.
-
-  Args:
-    output_filename: Path to where output file is saved.
-    label_map_dict: The label map dictionary.
-    annotations_dir: Directory where annotation files are stored.
-    image_dir: Directory where image files are stored.
-    examples: Examples to parse and save to tf record.
-  """
+    
   writer = tf.python_io.TFRecordWriter(output_filename)
   for idx, example in enumerate(examples):
     if idx % 100 == 0:
@@ -202,8 +153,8 @@ def main(_):
   logging.info('%d training and %d validation examples.',
                len(train_examples), len(val_examples))
 
-  train_output_path = os.path.join(FLAGS.output_dir, 'pet_train.record')
-  val_output_path = os.path.join(FLAGS.output_dir, 'pet_val.record')
+  train_output_path = os.path.join(FLAGS.output_dir, 'nerf_train.record')
+  val_output_path = os.path.join(FLAGS.output_dir, 'nerf_val.record')
   create_tf_record(train_output_path, label_map_dict, annotations_dir,
                    image_dir, train_examples)
   create_tf_record(val_output_path, label_map_dict, annotations_dir,
