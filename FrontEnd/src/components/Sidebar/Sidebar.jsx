@@ -5,8 +5,6 @@ import { NavLink } from "react-router-dom";
 import PerfectScrollbar from "perfect-scrollbar";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-
 // backgroundImage for Sidebar
 import image from "assets/img/full-screen-image-3.jpg";
 // image for avatar in Sidebar
@@ -26,6 +24,7 @@ class Sidebar extends Component {
     this.state = {
       openAvatar: false,
       openComponents: this.activeRoute("/components") !== "" ? true : false,
+      openCameras: this.activeRoute("/security") !== "" ? true : false,
       openForms: this.activeRoute("/forms") !== "" ? true : false,
       openTables: this.activeRoute("/tables") !== "" ? true : false,
       openMaps: this.activeRoute("/maps") !== "" ? true : false,
@@ -68,8 +67,8 @@ class Sidebar extends Component {
   }
   render() {
     return (
-      <div className="sidebar" data-color="black" data-image={image}>
-        <div className="sidebar-background" style={bgImage} />
+      <div className="sidebar" data-color="black">
+        <div className="sidebar-background" />
         <div className="logo">
           <a
             href="https://www.creative-tim.com"
@@ -83,58 +82,13 @@ class Sidebar extends Component {
             href="https://www.creative-tim.com"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            LOOKOUT AI
           </a>
         </div>
         <div className="sidebar-wrapper" ref="sidebarWrapper">
-          <div className="user">
-            <div className="photo">
-              <img src={avatar} alt="Avatar" />
-            </div>
-            <div className="info">
-              <a
-                onClick={() =>
-                  this.setState({ openAvatar: !this.state.openAvatar })
-                }
-              >
-                <span>
-                  Tania Andrew
-                  <b
-                    className={
-                      this.state.openAvatar ? "caret rotate-180" : "caret"
-                    }
-                  />
-                </span>
-              </a>
-              <Collapse in={this.state.openAvatar}>
-                <ul className="nav">
-                  <li>
-                    <a>
-                      <span className="sidebar-mini">MP</span>
-                      <span className="sidebar-normal">My Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <span className="sidebar-mini">EP</span>
-                      <span className="sidebar-normal">Edit Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <span className="sidebar-mini">S</span>
-                      <span className="sidebar-normal">Settings</span>
-                    </a>
-                  </li>
-                </ul>
-              </Collapse>
-            </div>
-          </div>
-
           <ul className="nav">
             {/* If we are on responsive, we want both links from navbar and sidebar
                             to appear in sidebar, so we render here HeaderLinks */}
-            {this.state.width <= 992 ? <HeaderLinks /> : null}
             {/*
                             here we render the links in the sidebar
                             if the link is simple, we make a simple link, if not,

@@ -1,8 +1,29 @@
 .card{
     border-radius: $border-radius-base;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05),0 0 0 1px rgba(63,63,68,.1);
+    // box-shadow: 0 1px 2px rgba(0,0,0,.05),0 0 0 1px rgba(63,63,68,.1);
     background-color: #FFFFFF;
     margin-bottom: 30px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+    // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    max-width: 500px;
+
+&:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+&.card-flex {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+&.card-alert {
+  border: 3px solid red
+}
+
+
 
 /*
     background-image: url('https://images.unsplash.com/photo-1438978280647-f359d95ebda4?q=80&fm=jpg&s=73cb1239b517411534379c92660b2660');
@@ -22,7 +43,26 @@
         box-shadow: 0 3px 40px rgba(0, 0, 0, 0.2);
         top: 24px;
     }
-*/
+*/  .store-image {
+      height: 260px;
+      position: relative;
+      width: 100%;
+      background-size: cover;
+    }
+
+    .store-image img {
+      height: 100%;
+      width: 100%;
+    }
+
+
+
+    .store-button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
 
     .image{
         width: 100%;
@@ -122,7 +162,7 @@
     .title{
         margin: $none;
         color: $black-color;
-        font-weight: $font-weight-light;
+        font-weight: $font-weight-semi;
     }
     .avatar{
         width: 30px;

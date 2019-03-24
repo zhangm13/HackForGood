@@ -9,6 +9,8 @@ import NotificationSystem from "react-notification-system";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
+import { Connector } from 'mqtt-react';
+
 
 // dinamically create dashboard routes
 import dashboardRoutes from "routes/dashboard.jsx";
@@ -96,6 +98,7 @@ class Dashboard extends Component {
   }
   render() {
     return (
+
       <div className="wrapper">
         <NotificationSystem ref="notificationSystem" style={style} />
         <Sidebar {...this.props} />

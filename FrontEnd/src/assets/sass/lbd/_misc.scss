@@ -32,7 +32,8 @@ body,
 }
 
 body{
-    background-color: $smoke-bg;
+    background-color: white;
+
 }
 
 a{
@@ -138,4 +139,71 @@ legend{
     width: 45px;
     height: 45px;
     top: 50%;
+}
+
+.icon-medium {
+  font-size: 30px;
+}
+
+.status-div {
+  font-size: 20px;
+
+  p {
+    font-size: 20px;
+    display: inline;
+  }
+}
+
+.threat-button-container {
+  margin-top: 10px;
+  p {
+    font-size: 20px;
+    margin: 0;
+  }
+}
+
+.dialog-ana div {
+  color: red;
+  font-size: 30px;
+}
+
+.dialog-ana .MuiTypography-root-48 {
+  color: red;
+  font-size: 30px;
+}
+
+#alert-dialog-slide-description {
+  font-size: 25px;
+}
+
+#alert-dialog-slide-title h2 {
+  font-size: 30px;
+  color: red;
+}
+
+
+
+.AnaAlert-root-1 button {
+  font-size: 25px;
+}
+
+.AnaAlert-root-1 button.btn-danger {
+  background-color: red;
+  color: white;
+}
+
+.AnaAlert-root-1 div.banana{
+  width: 100%;
+}
+
+div.MuiDialogActions-root-86 {
+  justify-content: space-around;
+}
+
+div.MuiPaper-root-20 {
+  overflow-y: hidden;
+}
+
+.AnaAlert-root-1 div.MuiDialogActions-root-86 {
+  width: 100%;
 }
