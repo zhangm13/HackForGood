@@ -3,7 +3,6 @@ import { Navbar } from "react-bootstrap";
 
 // links that appear in navbar - they are separated from this component (navbar) so that we can redner them on responsive in sidebar as well
 
-import HeaderLinks from "./HeaderLinks.jsx";
 
 // we import here the routes for dashboard pages (links that appear in sidebar) to set navbar's name
 
@@ -68,13 +67,6 @@ class Header extends Component {
           </Navbar.Brand>
           <Navbar.Toggle onClick={this.mobileSidebarToggle} />
         </Navbar.Header>
-
-        {/* Here we import the links that appear in navbar */}
-        {window.innerWidth > 992 ? (
-          <Navbar.Collapse>
-            <HeaderLinks />
-          </Navbar.Collapse>
-        ) : null}
       </Navbar>
     );
   }

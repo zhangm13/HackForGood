@@ -9,7 +9,9 @@ class Card extends Component {
           (this.props.hidden ? " card-hidden" : "") +
           (this.props.calendar ? " card-calendar" : "") +
           (this.props.plain ? " card-plain" : "") +
-          (this.props.wizard ? " card-wizard" : "")
+          (this.props.wizard ? " card-wizard" : "") +
+          (this.props.flex ? " card-flex" : "") +
+          (this.props.alert ? " card-alert" : "")
         }
       >
         {this.props.title !== undefined || this.props.category !== undefined ? (

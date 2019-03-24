@@ -9,13 +9,15 @@ import "./assets/sass/light-bootstrap-dashboard.css?v=1.1.1";
 import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
+
 ReactDOM.render(
-  <HashRouter>
-    <Switch>
-      {indexRoutes.map((prop, key) => {
-        return <Route path={prop.path} component={prop.component} key={key} />;
-      })}
-    </Switch>
-  </HashRouter>,
+    <HashRouter>
+      <Switch>
+        {indexRoutes.map((prop, key) => {
+          return <Route path={prop.path} component={prop.component} key={key} />;
+        })}
+      </Switch>
+    </HashRouter>
+  ,
   document.getElementById("root")
 );

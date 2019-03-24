@@ -1,90 +1,103 @@
 import React, { Component } from "react";
 import { Grid, Col, Row } from "react-bootstrap";
-// react component used to create charts
-import ChartistGraph from "react-chartist";
-// react components used to create a SVG / Vector map
-import { VectorMap } from "react-jvectormap";
-
 import Card from "components/Card/Card.jsx";
-import StatsCard from "components/Card/StatsCard.jsx";
-import Tasks from "components/Tasks/Tasks.jsx";
+import Button from "components/CustomButton/CustomButton.jsx"
+import MallStore from "components/MallStore/MallStore.jsx";
+import starbucks2 from "assets/img/starbucks2.jpg";
+import lobby from "assets/img/lobby.jpg";
+import rexall from "assets/img/rexall.jpeg";
+import foodcourt from "assets/img/foodcourt.jpg";
+import Dialog from '@material-ui/core/Dialog';
+import AnaAlert from "views/Security/AnaAlert.jsx";
+import { subscribe } from 'mqtt-react';
 
-import {
-  dataPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  table_data
-} from "variables/Variables.jsx";
 
 class Security extends Component {
-  createTableData() {
-    var tableRows = [];
-    for (var i = 0; i < table_data.length; i++) {
-      tableRows.push(
-        <tr key={i}>
-          <td>
-            <div className="flag">
-              <img src={table_data[i].flag} alt="us_flag" />
-            </div>
-          </td>
-          <td>{table_data[i].country}</td>
-          <td className="text-right">{table_data[i].count}</td>
-          <td className="text-right">{table_data[i].percentage}</td>
-        </tr>
-      );
+  constructor(props) {
+    super(props);
+    this.state = {
+      alert: false
     }
-    return tableRows;
+  }
+
+  tick = () => {
+    this.setState({
+      alert: true
+    });
+  }
+
+  setAlarmFalse = () => {
+    console.log('setting alarm false')
+    this.setState({
+      alert: false
+    })
+  }
+
+
+  componentDidMount() {
+    console.log('mounting this.props', this.props);
+    // this.intervalID = setTimeout(
+    //   () => this.tick(),
+    //   5000
+    // );
+  }
+
+  componentDidUpdate() {
+    console.log('update this.props', this.props)
   }
   render() {
+    const { data } = this.props;
+
     return (
       <div className="main-content">
         <Grid fluid>
           <Row>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-server text-warning" />}
-                statsText="Capacity"
-                statsValue="105GB"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Revenue"
-                statsValue="$1,345"
-                statsIcon={<i className="fa fa-calendar-o" />}
-                statsIconText="Last day"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
-                statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
-              />
-            </Col>
-            <Col lg={3} sm={6}>
-              <StatsCard
-                bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Followers"
-                statsValue="+45"
-                statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated now"
-              />
-            </Col>
+          <Col sm={8} mdOffset={2}>
+            <MallStore
+              onClick={this.tick}
+              alert={this.state.alert}
+              photoUrl={starbucks2}
+              title="Starbucks"
+              category="1st Floor, Unit 103"
+              liveUrl="http://192.168.8.223:8000/index.html"
+            />
+            <MallStore
+              onClick={this.tick}
+              title="Rexall"
+              photoUrl={rexall}
+              category="2st Floor, Unit 212"
+              liveUrl="http://192.168.8.130:8000/index.html"
+            />
+            <MallStore
+              onClick={this.tick}
+
+              title="Main Lobby"
+              photoUrl={lobby}
+              category="1st Floor, East Side"
+              liveUrl=""
+            />
+            <MallStore
+              onClick={this.tick}
+
+              title="Food Court"
+              photoUrl={foodcourt}
+              category="3nd Floor, South Side"
+              liveUrl=""
+            />
+          {this.state.alert ? <AnaAlert setAlarmFalse={this.setAlarmFalse}/> : null}
+
+          </Col>
+
           </Row>
+
         </Grid>
+
       </div>
     );
   }
 }
 
+// export default subscribe({
+//   topic: 'triggered'
+// })(Security);
 export default Security;

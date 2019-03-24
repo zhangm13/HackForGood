@@ -80,7 +80,7 @@ const events = [
     color: "azure"
   },
   {
-    title: "Click for Creative Tim",
+    title: "Click for LOOKOUT AI",
     start: new Date(y, m, 21),
     end: new Date(y, m, 22),
     color: "orange"

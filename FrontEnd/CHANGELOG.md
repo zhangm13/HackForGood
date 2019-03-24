@@ -58,4 +58,4 @@
 ## [1.0.0] 2017-10-25
 ### Original Release
 - Added React-Bootstrap as base framework
-- Added design from Light Bootstrap Dashboard Pro by Creative Tim
+- Added design from Light Bootstrap Dashboard Pro by LOOKOUT AI
